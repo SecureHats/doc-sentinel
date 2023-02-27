@@ -1,0 +1,20 @@
+name: '<solution-name>'
+description: 'A brief description of the solution'
+branding:
+  icon: 'check-square'
+  color: 'green'
+inputs:
+  filesPath:
+    description:  'The path containing the detection rules.'
+    required: false
+    default: '.'
+  logLevel:
+    description:  'Verbosity level of the test results (see documentation).'
+    required: false
+    default: 'Normal'
+
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/action.ps1 -FilesPath ${{ inputs.filesPath }} -LogLevel ${{ inputs.logLevel }}
+      shell: pwsh
